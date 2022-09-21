@@ -1,4 +1,4 @@
-# Created a Portfolion class that creates two instance variables, 'S' for saving and 'C' for checking
+# Created a Portfolion class that creates two instance variables, 'S' for saving account and 'C' for checking account
 class Portfolio():
     def __init__(self, check_bal=0, sav_acc=0):
         self._check_acc = check_bal
@@ -33,3 +33,16 @@ class Portfolio():
             self.deposit(amount, tran_to_acc)
         else:
             print(f'Insufficient Funds, unable to transfer the amount into the other account.')
+
+# Creating a simple test case, without the bank_account transfer.
+def test_portfolio_acc_method():
+    my_portf = Portfolio(100, 400)
+    assert my_portf.getBalance('C') == 100
+    assert my_portf.getBalance('S') == 400
+
+# A test case to check if the transfer method works properly
+def test_transfer():
+    my_portf = Portfolio(100, 700)
+    my_portf.transfer(200, 'S')
+    assert my_portf.getBalance('C') == 300
+    assert my_portf.getBalance('S') == 500

@@ -1,14 +1,13 @@
-## A class that represents a combination lock. In retroperspective, this code could be much more simplificated.
+# A class that represents a real life combination lock.
 class ComboLock():
-    ## Constructor takes in the parameters if they are all within 0-39, otherwise it raises a ValueError.
+    # Constructor takes in the parameters if they are all within 0-39, otherwise a ValueError is raised.
     def __init__(self, secret1, secret2, secret3):
         if 0 <= secret1 <=39 and 0 <= secret2 <=39 and 0 <= secret3 <=39:
-            self._right1 = secret1
-            self._left = secret2
-            self._right2 = secret3
-            
+            self._right1 = int(secret1)
+            self._left = int(secret2)
+            self._right2 = int(secret3)
         else:
-            raise ValueError('All values are not within 0 and 39')
+            raise ValueError('Has to be a real number within 0 and 39')
             
         # Instantiates the rotate instance methods to 0, these simulates the rotations of the lock
         self._leftRotate = 0
@@ -87,16 +86,23 @@ class ComboLock():
         else:
             print('Lock is closed')
 
+# Simple test of the class.
 new_lock = ComboLock(4, 5, 10)
 print('Trying to open up the combination lock after instantiating the new object:')
+print('Expected:\nLock is closed')
+print('Actual output is:')
 new_lock.open()
+
 new_lock.turnRight(4)
 new_lock.turnLeft(5)
 print('Second try after opening the two first combinations:')
 new_lock.open()
-
 new_lock.turnRight(10)
 print('After opening up the third lock:')
+new_lock.open()
+print("Rotating the lock more after it's been opened, expected the lock to close up again:")
+new_lock.turnRight(10)
+print('Actual output is:')
 new_lock.open()
 
 # Generating a combination with only zero's as the lock combination:
