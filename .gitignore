@@ -2,3 +2,5 @@ GRA-4152
 app.py
 text.txt
 .DS_Store
+/project/.ipynb_checkpoints
+/project/__pycache__
