@@ -4,3 +4,4 @@ text.txt
 .DS_Store
 /project/.ipynb_checkpoints
 /project/__pycache__
+__pycache__/

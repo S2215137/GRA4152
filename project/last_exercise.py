@@ -15,10 +15,10 @@ from scipy.optimize import minimize
 from sklearn.metrics import roc_auc_score
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
-from classes_for_last_exercise import *
+from linearmodels import *
 import statsmodels.api as sm
 
-## Adding code description and filtering for the program.
+## Adding code description and filtering for the sutiable inputs for the program.
 
 parser = argparse.ArgumentParser(
     description=textwrap.dedent('''This program is a test for the logistic 
@@ -28,29 +28,35 @@ parser = argparse.ArgumentParser(
     regression model works.
     '''))
 
+# Seed value, which is by default 12345
 parser.add_argument('-seed_value', '-seed_val', type=int, default=12345,
 help=textwrap.dedent('''A random state from the random module, to split the training and
  test set. Default value is 12345'''))
 
+# Percentage of the training set that should be included.
 parser.add_argument('-perc_training_set', '--perc_training_set',type=int, 
 help='The percentage of the split of training set.')
 
+# Covariates can be specified chosen between 1, 2, and 3. If the user wants a constant, 0 should be included as well.
 parser.add_argument('-covar', '--covariates', nargs='+', type=int, choices=[0, 1, 2, 3],
     help=textwrap.dedent('''Write the wanted covariates/independent variables in the formula in a list
     format input, should look like this for example: 1 3, means columns 1 and 3
     are the covariates that should be used in this case.
     0 in this case would be to add a constant to the regression model.'''))
 
+# To specify the output will include a plot, include -make_plot
 parser.add_argument('-make_plot', '--make_plot', action='store_true', 
     help='Specify this value if the user wants the output to be plotted. Specify this variable'+
     'to output the plot.')
 
 args = parser.parse_args()
 
+import statsmodels.api as sm
 spector_data = sm.datasets.spector.load()
 # if pandas dataset in statsmodels (some versions of statsmodels):
 spector_y = spector_data.endog.values
 spector_x = spector_data.exog.values
+print(spector_x, spector_y)
 # if numpy arrays in statsmodels (some versions of statsmodels)
 #spector_y = spector_data.endog
 #spector_x = spector_data.exog
