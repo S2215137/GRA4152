@@ -56,7 +56,6 @@ spector_data = sm.datasets.spector.load()
 # if pandas dataset in statsmodels (some versions of statsmodels):
 spector_y = spector_data.endog.values
 spector_x = spector_data.exog.values
-print(spector_x, spector_y)
 # if numpy arrays in statsmodels (some versions of statsmodels)
 #spector_y = spector_data.endog
 #spector_x = spector_data.exog

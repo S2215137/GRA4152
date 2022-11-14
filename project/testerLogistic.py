@@ -9,6 +9,8 @@ from sklearn.metrics import roc_auc_score
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 
+from scipy.optimize import minimize
+
 from linearmodels import *
 
 import statsmodels.api as sm
@@ -35,7 +37,6 @@ reg1.linearModel(spector, 'train', "y ~ b0 + b1*x1")
 # Fitting the beta parameter's.
 reg1.optimize()
 reg1.summary()
-
 
 # Creating an instance of diagnosticPlot with Linear Regression
 # as input.

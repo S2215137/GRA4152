@@ -229,8 +229,7 @@ class LogisticRegression(LM):
     #  @param y the y observations
     #  @return the model deviance as a single number used for optimization
     #
-    def fit(self, params, x, y):
-        x = x[self._regrPos, :]
+    def fit(self, params, x, y):                 
         xt_beta = np.dot(x.T, params)
         return np.sum(np.log(1 + np.exp(xt_beta)) - y*(xt_beta))
 
